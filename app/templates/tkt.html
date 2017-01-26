@@ -1,0 +1,118 @@
+{% extends 'layout.html' %}
+{% import "issue_macro.html" as issue %}
+{% import "story_macro.html" as story %}
+
+{% block body %}
+    <style type="text/css">
+        .ip-pad-adjust { padding-left: 5px !important; padding-right: 5px !important; }
+        .dettach-issue { margin: 3px;}
+    </style>
+    <div class="container">
+        <div class="col-md-12 col-xs-12">
+            <div class="panel panel-default">                
+                <div class="panel-heading">Issues & Stories</div>
+                <div class="panel-body">
+                    <fieldset>
+                        <legend>Retrieve</legend>
+                            <div class="col-md-5 col-xs-8">
+                                <fieldset>
+                                    <legend>By "Issue" Status</legend>
+                                        <button class="btn btn-success btn-xs" id="btn-issue-all">All</button>
+                                        <button class="btn btn-default btn-xs" id="btn-istat-open">Open</button>
+                                        <button class="btn btn-default btn-xs" id="btn-istat-working">Working</button>
+                                        <button class="btn btn-default btn-xs" id="btn-istat-testing">Testing</button>
+                                        <button class="btn btn-default btn-xs" id="btn-istat-completed">Completed</button>
+                                        <button class="btn btn-default btn-xs" id="btn-istat-noissue">noissue</button>
+                                </fieldset>
+                            </div>
+                            <div class="col-md-3 col-xs-8">
+                                <fieldset>
+                                    <legend>By "Issue" Type</legend>
+                                        <button class="btn btn-danger btn-xs" id="btn-itype-bug">
+                                            <span class="glyphicon glyphicon-fire" style="padding-right: 2px;"></span> Bug
+                                        </button>
+                                        <button class="btn btn-primary btn-xs" id="btn-itype-task">
+                                            <span class="glyphicon glyphicon-briefcase" style="padding-right: 2px;"></span> Task
+                                        </button>
+                                        <button class="btn btn-warning btn-xs" id="btn-itype-feature">
+                                            <span class="glyphicon glyphicon-star" style="padding-right: 2px;"></span> Feature
+                                        </button>
+                                </fieldset>
+                            </div>
+                            <div class="col-md-4 col-xs-8">
+                                <fieldset>
+                                    <legend>By "Story" Status</legend>
+                                        <button class="btn btn-warning btn-xs" id="btn-sstat-all">All</button>
+                                        <button class="btn btn-default btn-xs" id="btn-sstat-draft" style="background-color: #003366; color: white;">
+                                            Draft
+                                        </button>
+                                        <button class="btn btn-default btn-xs" id="btn-sstat-inreview" style="background-color: #006699; color: white;">
+                                            In-Review
+                                        </button>
+                                        <button class="btn btn-default btn-xs" id="btn-sstat-working" style="background-color: #009900; color: white;">
+                                            Working
+                                        </button>
+                                        <button class="btn btn-default btn-xs" id="btn-sstat-implemented" style="background-color: #006600; color: white;" >
+                                            Implemented
+                                        </button>
+                                </fieldset>
+                            </div>
+                    </fieldset>
+                    <br>
+                    <fieldset>
+                        <legend>Add</legend>
+                            <div class="col-md-6 col-xs-8">
+                                <button class="btn btn-success btn-xs" id="btn-add-issue">Create New Issue</button>
+                            </div>
+                            <div class="col-md-6 col-xs-8">
+                                <button class="btn btn-primary btn-xs" id="btn-add-story">Create New Story</button>
+                            </div>
+                    </fieldset>
+                    <br>                    
+                    <fieldset>
+                        <legend>Search</legend>
+                            <div class="form-horizontal">
+                                <div class="form-group">
+                                    <div class="col-md-2 col-xs-8">
+                                        <select id="type-search" name="type-search" class="form-control">
+                                            <option value="id">ID</option>
+                                            <option value="title">Title</option>
+                                            <option value="status">Status</option>
+                                            <option value="type">Type</option>
+                                            <option value="url">URL</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4 col-xs-8">                        
+                                        <input type="text" class="form-control" id="text-search">
+                                    </div>
+                                    <div class="col-md-6 col-xs-8">
+                                        <button class="btn btn-success" id="btn-issue-search">Search Issue</button>
+                                        <button class="btn btn-primary" id="btn-story-search">Search Story</button>
+                                    </div>
+                                </div>
+                            </div>
+                    </fieldset>                    
+                </div>                
+            </div>
+            <div class="panel panel-info">                
+                <div class="panel-heading">Result</div>
+                <div class="panel-body">
+                    <div class="result" id="result">
+                    </div>
+                </div>            
+            </div>
+
+            <!-- Edit & Add Story -->
+
+            {{ issue.edit_issue_modal() }}
+            {{ issue.add_issue_modal() }}
+
+            <!-- Edit & Add Story -->
+            {{ story.edit_story_modal() }}
+            {{ story.add_story_modal() }}
+
+            <!-- Preview -->
+            {{ story.preview_modal() }}
+        </div>
+    </div>
+{% endblock %}
