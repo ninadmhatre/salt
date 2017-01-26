@@ -1,0 +1,192 @@
+{% macro edit_story_modal() %}
+<div id="edit-story" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Edit Issue</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" action="" id="form-edit-story" style="padding-left: 5px;">
+                    <div class="form container">
+                        <div class="form-group">
+                            <label class="control-label col-xs-1" for="story-edit-id">ID</label>
+                            <div class="col-md-7 col-xs-8">
+                                <input id="story-edit-id" class="form-control col-xs-10 ip-pad-adjust" readonly/>
+                            </div>
+                        </div>                                
+                        <div class="form-group">
+                            <label class="control-label col-xs-1" for="story-edit-title">Title</label>
+                            <div class="col-md-7 col-xs-8">
+                                <input id="story-edit-title" class="form-control col-xs-10 ip-pad-adjust" required/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-xs-1" for="story-edit-desc">Desciption</label>
+                            <div class="col-md-7 col-xs-8">
+                                <textarea id="story-edit-desc" class="form-control col-xs-10 ip-pad-adjust" rows="4" required></textarea>
+                                <div class="row">
+                                    <button class="btn btn-link" id="preview-edit-story">Preview as HTML</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-xs-1" for="story-edit-tag">Tag</label>
+                            <div class="col-md-7 col-xs-8">
+                                <input id="story-edit-tag" class="form-control col-xs-10 ip-pad-adjust"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-xs-1" for="story-edit-status">Type</label>
+                            <div class="col-md-4 col-xs-8">
+                                <select id="story-edit-status" class="form-control col-xs-4 ip-pad-adjust">
+                                    <option value="draft">Draft</option>
+                                    <option value="inreview">In Review</option>
+                                    <option value="working">Working</option>
+                                    <option value="implemented">Implemented</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-xs-1" for="story-edit-url">URL</label>
+                            <div class="col-md-7 col-xs-8">
+                                <input id="story-edit-url" class="form-control col-xs-10 ip-pad-adjust"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-xs-1" for="story-edit-issues">Issues</label>
+                            <div class="col-md-8 col-xs-8">
+                                <div class="col-md-6">
+                                    <div class="story-issues"></div>
+                                </div>
+                                <div class="col-md-4 col-xs-4">
+                                    <input id="story-issue-search-text" class="form-control" placeholder="Enter Issue ID..."/>
+                                </div>
+                                <button class="btn btn-primary" id="story-issue-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-7 col-md-offset-1 col-xs-7 col-xs-offset-1">
+                                <div class="panel panel-info">
+                                    <div class="panel-heading">Search Result</div>
+                                    <div class="panel-body">
+                                        <div id="story-issue-search-result"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" id="update-story">Update</button>
+                <button type="button" class="btn btn-danger" id="delete-story">Delete</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endmacro %}
+
+{% macro add_story_modal() %}
+<div id="add-story" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Edit Issue</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" action="" id="form-add-story" style="padding-left: 5px;">
+                    <div class="form container">
+                        <div class="form-group">
+                            <label class="control-label col-xs-1" for="story-add-title">Title</label>
+                            <div class="col-md-7 col-xs-8">
+                                <input id="story-add-title" class="form-control col-xs-10 ip-pad-adjust" required/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-xs-1" for="story-add-desc">Desciption</label>
+                            <div class="col-md-7 col-xs-8">
+                                <textarea id="story-add-desc" class="form-control col-xs-10 ip-pad-adjust" rows="4" required></textarea>
+                                <div class="row">
+                                    <button class="btn btn-link" id="preview-add-story">Preview as HTML</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-xs-1" for="story-add-tag">Tag</label>
+                            <div class="col-md-7 col-xs-8">
+                                <input id="story-add-tag" class="form-control col-xs-10 ip-pad-adjust"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-xs-1" for="story-add-status">Type</label>
+                            <div class="col-md-4 col-xs-8">
+                                <select id="story-add-status" class="form-control col-xs-4 ip-pad-adjust">
+                                    <option value="draft">Draft</option>
+                                    <option value="inreview">In Review</option>
+                                    <option value="working">Working</option>
+                                    <option value="implemented">Implemented</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-xs-1" for="story-add-url">URL</label>
+                            <div class="col-md-7 col-xs-8">
+                                <input id="story-add-url" class="form-control col-xs-10 ip-pad-adjust"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-xs-1" for="story-add-issues">Issues</label>
+                            <div class="col-md-8 col-xs-8">
+                                <div class="col-md-6">
+                                    <div class="story-add-issues"></div>
+                                </div>
+                                <div class="col-md-4 col-xs-4">
+                                    <input id="story-add-issue-search-text" class="form-control" placeholder="Enter Issue ID..."/>
+                                </div>
+                                <button class="btn btn-primary" id="story-add-issue-search-btn"><span class="glyphicon glyphicon-search"></span></button>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-7 col-md-offset-1 col-xs-7 col-xs-offset-1">
+                                <div class="panel panel-info">
+                                    <div class="panel-heading">Search Result</div>
+                                    <div class="panel-body">
+                                        <div id="story-add-issue-search-result"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" id="save-story">Create</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endmacro %}
+
+{% macro preview_modal() %}
+<div id="preview-desc" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Description - Preview</h4>
+            </div>
+            <div class="modal-body">
+                <div id="preview-content"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>     
+{% endmacro %}       
+            
