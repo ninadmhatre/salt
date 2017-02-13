@@ -125,7 +125,6 @@ $('#update-issue').on('click', function(e) {
     }
 
     var doneFunc = function(result) {
-        $('#btn-istat-' + result.type).trigger('click');
         $('#form-edit-issue').trigger('reset');
         $('#btn-issue-all').trigger('click');
         $('#edit-issue').modal('hide');
@@ -138,7 +137,7 @@ $('#update-issue').on('click', function(e) {
     }
 
     var $url = constuctURL(['issue', 'update']);
-    postRequest($url, $data, doneFunc, failFunc);
+    postRequest($url, $data, 'issue', doneFunc, failFunc);
 
 });
 
@@ -146,12 +145,12 @@ $('#save-issue').on('click', function(e) {
     e.preventDefault();
 
     var $data = {
-        title: $('#issue-edit-title').val(),
-        desc: $('#issue-edit-desc').val(),
-        tag: $('#issue-edit-tag').val(),
-        type: $('#issue-edit-type').val(),
-        status: $('#issue-edit-status').val(),
-        url: $('#issue-edit-url').val()
+        title: $('#issue-add-title').val(),
+        desc: $('#issue-add-desc').val(),
+        tag: $('#issue-add-tag').val(),
+        type: $('#issue-add-type').val(),
+        status: $('#issue-add-status').val(),
+        url: $('#issue-add-url').val()
     };
 
     var r = validate($data, optional=['tag']);
@@ -162,7 +161,6 @@ $('#save-issue').on('click', function(e) {
     }
 
     var doneFunc = function(result) {
-        $('#btn-istat-' + result.type).trigger('click');
         $('#form-add-issue').trigger('reset');
         $('#btn-issue-all').trigger('click');
         $('#add-issue').modal('hide');
@@ -175,7 +173,7 @@ $('#save-issue').on('click', function(e) {
     }
 
     var $url = constuctURL(['issue', 'add']);
-    postRequest($url, $data, doneFunc, failFunc);
+    postRequest($url, $data, 'issue', doneFunc, failFunc);
 });
 
 

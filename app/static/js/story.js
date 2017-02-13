@@ -47,16 +47,14 @@ $('body').on('click', 'button#attach-issue', function(e) {
 
 function attachIssue(issue, elem) {
     var $elem = elem || $('.story-issues');
-    var $attach = '<button class="btn btn-primary btn-xs dettach-issue">' + issue + '</button';
+    var $attach = '<button class="btn btn-primary btn-xs detach-issue">' + issue + '</button';
     
     var attachedIssues = getAttachedIssues();
 
-    /*
-    if ( $.inArray($issue, attachedIssues ) != -1 ) {
+    if ( $.inArray(issue, attachedIssues ) != -1 ) {
         showMessage('Issue is already attached!', 'error');
         return false;
     }
-    */
 
     if ( attachedIssues.length >= 10 ) {
         showMessage("Maximum 10 Issues can be attached to a story", 'error')
@@ -88,8 +86,8 @@ $('#story-issue-search-btn').on('click', function(e) {
     }
 });
 
-// dettach issue
-$('body').on('click', 'button.dettach-issue', function(e) {    
+// detach issue
+$('body').on('click', 'button.detach-issue', function(e) {
     // alert('going to edit issue...');
     e.preventDefault();
     $(this).remove();
@@ -132,7 +130,7 @@ $('#delete-story').on('click', function(e) {
 
 $('#btn-add-story').on('click', function(e) {
     $('#form-add-story').trigger('reset');
-    cleanupStoryNonFormElemets();
+    cleanupStoryNonFormElements();
     $('#add-story').modal();
 });
 
@@ -149,7 +147,7 @@ $('#update-story').on('click', function(e) {
         issues: getAttachedIssues().join(',')
     };
 
-    r = validate($data, skip=['tag']);
+    r = validate($data, skip=['tag', 'issues']);
 
     if (!r.ok) {
         alert('Validation Failed, Please correct below errors\n\n' + r.error);
@@ -160,7 +158,7 @@ $('#update-story').on('click', function(e) {
         $('#form-edit-story').trigger('reset');
         $('#btn-sstat-all').trigger('click');
         $('#edit-story').modal('hide');
-        cleanupStoryNonFormElemets();
+        cleanupStoryNonFormElements();
     }
 
     var failFunc = function(err) {
@@ -168,11 +166,11 @@ $('#update-story').on('click', function(e) {
         alert('Failed to update issue, please see the error\n\n'+ $err);
         $('#form-edit-story').trigger('reset');
         $('#edit-story').modal('hide');
-        cleanupStoryNonFormElemets();
+        cleanupStoryNonFormElements();
     }
 
     var $url = constuctURL(['story', 'update']);
-    postRequest($url, $data, doneFunc, failFunc);
+    postRequest($url, $data, 'story', doneFunc, failFunc);
 });
 
 $('#save-story').on('click', function(e) {
@@ -198,7 +196,7 @@ $('#save-story').on('click', function(e) {
         $('#form-add-story').trigger('reset');
         $('#btn-sstat-all').trigger('click');
         $('#add-story').modal('hide');
-        cleanupStoryNonFormElemets();
+        cleanupStoryNonFormElements();
     }
 
     var failFunc = function(err) {
@@ -206,11 +204,11 @@ $('#save-story').on('click', function(e) {
         alert('Failed to create an issue, please see the error\n\n'+ $err);
         $('#form-add-story').trigger('reset');
         $('#add-story').modal('hide');
-        cleanupStoryNonFormElemets();
+        cleanupStoryNonFormElements();
     }
 
     var $url = constuctURL(['story', 'add']);
-    postRequest($url, $data, doneFunc, failFunc);
+    postRequest($url, $data, 'story', doneFunc, failFunc);
 });
 
 $('#btn-story-search').on('click', function(e) {
@@ -225,7 +223,7 @@ $('#btn-story-search').on('click', function(e) {
     getRequest($STORY_GET_API_URL, {filter: $type, search: $term}, 'story', showAsTable);
 });
 
-function cleanupStoryNonFormElemets() {
+function cleanupStoryNonFormElements() {
     $(".story-issues").empty();
     $("#story-issue-search-result").empty();
     $("#story-issue-search-text").empty();
@@ -247,10 +245,3 @@ $('#preview-edit-story').on('click', function(e) {
     previewHTML($textElement);
 });
 
-function previewHTML(text) {
-    var $html = MD_2_HTML_CONVERTOR.makeHtml(text);
-    $('#preview-desc').modal();
-    var $displayElement = $('div#preview-content');
-    $displayElement.empty();
-    $displayElement.html($html);
-}

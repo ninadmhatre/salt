@@ -8,22 +8,22 @@
             </div>
             <div class="modal-body">
                 <form class="form-horizontal" action="" id="form-edit-issue" style="padding-left: 5px;">
-                    <div class="form container">
+                    <div class="form">
                         <div class="form-group">
                             <label class="control-label col-xs-1" for="issue-edit-id">ID</label>
-                            <div class="col-sm-8 col-xs-8">
+                            <div class="col-md-10 col-xs-8">
                                 <input id="issue-edit-id" class="form-control col-xs-10 ip-pad-adjust" readonly/>
                             </div>
                         </div>                                
                         <div class="form-group">
                             <label class="control-label col-xs-1" for="issue-edit-title">Title</label>
-                            <div class="col-md-8 col-xs-8">
+                            <div class="col-md-10 col-xs-8">
                                 <input id="issue-edit-title" class="form-control col-xs-10 ip-pad-adjust" required/>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="control-label col-xs-1" for="issue-edit-desc">Desciption</label>
-                            <div class="col-md-8 col-xs-8">
+                            <label class="control-label col-xs-1" for="issue-edit-desc">Description</label>
+                            <div class="col-md-10 col-xs-8">
                                 <textarea id="issue-edit-desc" class="form-control col-xs-10 ip-pad-adjust" rows="4" required></textarea>
                                 <div class="row">
                                     <button class="btn btn-link" id="preview-edit-issue">Preview as HTML</button>
@@ -32,13 +32,13 @@
                         </div>
                         <div class="form-group">
                             <label class="control-label col-xs-1" for="issue-edit-tag">Tag</label>
-                            <div class="col-md-8 col-xs-8">
+                            <div class="col-md-10 col-xs-8">
                                 <input id="issue-edit-tag" class="form-control col-xs-10 ip-pad-adjust"/>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-xs-1" for="issue-edit-type">Type</label>
-                            <div class="col-md-8 col-xs-8">
+                            <div class="col-md-4 col-xs-8">
                                 <select id="issue-edit-type" class="form-control col-xs-4 ip-pad-adjust">
                                     <option value="bug">Bug</option>
                                     <option value="task">Task</option>
@@ -48,7 +48,7 @@
                         </div>
                         <div class="form-group">
                             <label class="control-label col-xs-1" for="issue-edit-status">Status</label>
-                            <div class="col-md-8 col-xs-8">
+                            <div class="col-md-4 col-xs-8">
                                 <select id="issue-edit-status" class="form-control col-xs-4 ip-pad-adjust">
                                     <option value="open">Open</option>
                                     <option value="working">Working</option>
@@ -61,7 +61,10 @@
                         <div class="form-group">
                             <label class="control-label col-xs-1" for="issue-edit-url">URL</label>
                             <div class="col-md-8 col-xs-8">
-                                <input id="issue-edit-url" class="form-control col-xs-10 ip-pad-adjust"/>
+                                <input id="issue-edit-url" class="form-control col-xs-10 ip-pad-adjust ref_url"/>
+                            </div>
+                            <div class="col-md-2 col-xs-8">
+                                <button class="btn btn-info get-ref-url">Get Reference/Current URL</button>
                             </div>
                         </div>
                     </div>
@@ -88,30 +91,30 @@
             <div class="modal-body">
                 <form class="form-horizontal" action="" id="form-add-issue" style="padding-left: 5px;">
                     <div class="form-group">
-                        <label class="control-label col-xs-1" for="issue-title">Title</label>
+                        <label class="control-label col-xs-1" for="issue-add-title">Title</label>
                         <div class="col-md-10 col-xs-8">
-                            <input id="issue-title" class="form-control col-xs-12"/>
+                            <input id="issue-add-title" class="form-control col-xs-12"/>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label col-xs-1" for="issue-desc">Desciption</label>
+                        <label class="control-label col-xs-1" for="issue-add-desc">Description</label>
                         <div class="col-md-10 col-xs-8">
-                            <textarea id="issue-desc" class="form-control col-xs-10 ip-pad-adjust" rows="4" required></textarea>
+                            <textarea id="issue-add-desc" class="form-control col-xs-10 ip-pad-adjust" rows="4" required></textarea>
                             <div class="row">
                                 <button class="btn btn-link" id="preview-add-issue">Preview as HTML</button>
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label col-xs-1" for="issue-tag">Tag</label>
+                        <label class="control-label col-xs-1" for="issue-add-tag">Tag</label>
                         <div class="col-md-10 col-xs-8">
-                            <input id="issue-tag" class="form-control col-xs-12"/>
+                            <input id="issue-add-tag" class="form-control col-xs-12"/>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label col-xs-1" for="issue-type">Type</label>
+                        <label class="control-label col-xs-1" for="issue-add-type">Type</label>
                         <div class="col-md-4 col-xs-8">
-                            <select id="issue-type" class="form-control col-xs-6">
+                            <select id="issue-add-type" class="form-control col-xs-6">
                                 <option value="bug">Bug</option>
                                 <option value="task">Task</option>
                                 <option value="feature">Feature</option>
@@ -119,9 +122,9 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label col-xs-1" for="issue-status">Status</label>
+                        <label class="control-label col-xs-1" for="issue-add-status">Status</label>
                         <div class="col-md-4 col-xs-8">
-                            <select id="issue-status" class="form-control col-xs-6">
+                            <select id="issue-add-status" class="form-control col-xs-6">
                                 <option value="open">Open</option>
                                 <option value="working">Working</option>
                                 <option value="testing">Testing</option>
@@ -131,12 +134,12 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label col-xs-1" for="issue-url">URL</label>
-                        <div class="col-md-6 col-xs-8">
-                            <input id="issue-url" class="form-control col-xs-12"/>
+                        <label class="control-label col-xs-1" for="issue-add-url">URL</label>
+                        <div class="col-md-8 col-xs-8">
+                            <input id="issue-add-url" class="form-control col-xs-12 ref_url"/>
                         </div>
                         <div class="col-md-2 col-xs-8">
-                            <button class="btn btn-info" id="get-ref-url">Get Reference/Current URL</button>
+                            <button class="btn btn-info get-ref-url">Get Reference/Current URL</button>
                         </div>
                     </div>
                 </form>

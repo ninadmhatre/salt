@@ -5,11 +5,20 @@
 {% block body %}
     <style type="text/css">
         .ip-pad-adjust { padding-left: 5px !important; padding-right: 5px !important; }
-        .dettach-issue { margin: 3px;}
+        .detach-issue { margin: 3px;}
+        .modal-dialog{ overflow-y: initial !important }
+        .modal-body{ height: 500px; overflow-y: auto; }
+        .control-label { margin-right: 10px !important; }
     </style>
+
     <div class="container">
         <div class="col-md-12 col-xs-12">
-            <div class="panel panel-default">                
+            <div class="alert alert-dismissible alert-info">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <h4>Note</h4>
+                <p>Please adjust height & width of this window to align elements properly!</p>
+            </div>
+            <div class="panel panel-default">
                 <div class="panel-heading">Issues & Stories</div>
                 <div class="panel-body">
                     <fieldset>
