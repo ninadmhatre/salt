@@ -14,12 +14,42 @@ var genericFailFunc = function(err) {
     $e.html('<h4 class="text-center">Failed to fetch data!</h4><br><pre><code>' + err + '</code></pre>');
 }
 
-$('#get-ref-url').on('click', function(e) {
-    $('#issue-url').val(getRefOrCurrentURL());
+function previewHTML(text) {
+    var $html = MD_2_HTML_CONVERTOR.makeHtml(text);
+    $('#preview-desc').modal();
+    var $displayElement = $('div#preview-content');
+    $displayElement.empty();
+    $displayElement.html($html);
+}
+
+$('button.get-ref-url').on('click', function(e) {
     e.preventDefault();
+    var $top = $(this).parent().parent();
+    var $input = $top.find('.ref_url');
+    if ( $input ) {
+        console.log('Setting up using parent...');
+        $input.val(getRefOrCurrentURL());
+    } else {
+        $('#issue-url').val(getRefOrCurrentURL());
+    }
     return false;
 });
 
+$('#type-search').on('change', function() {
+    var $selected = $(this).val();
+    var $ip = $('input#text-search');
+    $ip.val('');
+    if ($selected == 'type') {
+        $('button#btn-story-search').prop('disabled', true);
+        $ip.attr('placeholder', "Search by 'type' is not available for story!");
+    } else {
+        $('button#btn-story-search').prop('disabled', false);
+        if ($selected == 'url') {
+            $('input#text-search').val(getRefOrCurrentURL());
+        }
+        $ip.attr('placeholder', "Search by '" + $selected + "' ...");
+    }
+});
 
 // Functions
 // Ajax
@@ -37,7 +67,7 @@ var getRequest = function(url, data, query, doneCB, failCB, funcParamDict) {
         });
 }
 
-var postRequest = function(url, data, doneCB, failCB, funcParamDict) {
+var postRequest = function(url, data, query, doneCB, failCB, funcParamDict) {
     failCB = failCB || genericFailFunc;
     funcParamDict = funcParamDict || {};
 
@@ -88,7 +118,7 @@ var showAsTable = function(data, query, params) {
                 tblBody += '  <td>' + val.type + '</td>';
             }
             tblBody += '  <td>' + val.title + '</td>';
-            tblBody += '  <td>' + getSubstring(val.desc) + '</td>';
+            tblBody += '  <td>' + toMarkdown(getSubstring(val.desc)) + '</td>';
             tblBody += '  <td>' + val.tag + '</td>';
             tblBody += '  <td>' + val.status + '</td>';
             tblBody += '  <td>' + val.url + '</td>';
@@ -161,9 +191,11 @@ function fillItemForm(data, query, params) {
         if ( query == 'issue' ) {
             $('#' + query + '-edit-type').val(d.type);
         } else {
-            cleanupStoryNonFormElemets();
+            cleanupStoryNonFormElements();
             $.each(d.issues, function(idx, ival) {
-                attachIssue(ival);
+                if ( ival != '' ) {
+                    attachIssue(ival);
+                }
             });
         }
     }
@@ -219,7 +251,7 @@ function showMessage(msg, type) {
 
 function getAttachedIssues() {
     var attached = [];
-    $('button.dettach-issue').each(function() {
+    $('button.detach-issue').each(function() {
         var $t = $(this).text();
         if ( $.inArray($t, attached) == -1 ) {
             attached.push($(this).text());   

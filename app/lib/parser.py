@@ -46,6 +46,8 @@ class StoryParser(object):
         data['status'] = param.get('status')
         data['tag'] = param.get('tag')
         data['issues'] = param.get('issues').split(',')
+        data['ctime'] = datetime.datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S')
+        data['utime'] = datetime.datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S')
 
         return data
 
@@ -59,6 +61,7 @@ class StoryParser(object):
         data['status'] = param.get('status')
         data['tag'] = param.get('tag')
         data['issues'] = param.get('issues').split(',')
+        data['utime'] = datetime.datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S')
 
         return data
 
@@ -131,6 +134,7 @@ class IssueParser(object):
 
     def get_request(self, filter, search):
         pass
+
 
 class Validator(object):
     """

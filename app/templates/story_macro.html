@@ -4,26 +4,26 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Edit Issue</h4>
+                <h4 class="modal-title">Edit Story</h4>
             </div>
             <div class="modal-body">
                 <form class="form-horizontal" action="" id="form-edit-story" style="padding-left: 5px;">
-                    <div class="form container">
+                    <div class="form">
                         <div class="form-group">
                             <label class="control-label col-xs-1" for="story-edit-id">ID</label>
-                            <div class="col-md-7 col-xs-8">
+                            <div class="col-md-10 col-xs-8">
                                 <input id="story-edit-id" class="form-control col-xs-10 ip-pad-adjust" readonly/>
                             </div>
                         </div>                                
                         <div class="form-group">
                             <label class="control-label col-xs-1" for="story-edit-title">Title</label>
-                            <div class="col-md-7 col-xs-8">
+                            <div class="col-md-10 col-xs-8">
                                 <input id="story-edit-title" class="form-control col-xs-10 ip-pad-adjust" required/>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="control-label col-xs-1" for="story-edit-desc">Desciption</label>
-                            <div class="col-md-7 col-xs-8">
+                            <label class="control-label col-xs-1" for="story-edit-desc">Description</label>
+                            <div class="col-md-10 col-xs-8">
                                 <textarea id="story-edit-desc" class="form-control col-xs-10 ip-pad-adjust" rows="4" required></textarea>
                                 <div class="row">
                                     <button class="btn btn-link" id="preview-edit-story">Preview as HTML</button>
@@ -32,8 +32,8 @@
                         </div>
                         <div class="form-group">
                             <label class="control-label col-xs-1" for="story-edit-tag">Tag</label>
-                            <div class="col-md-7 col-xs-8">
-                                <input id="story-edit-tag" class="form-control col-xs-10 ip-pad-adjust"/>
+                            <div class="col-md-10 col-xs-8">
+                                <input id="story-redit-tag" class="form-control col-xs-10 ip-pad-adjust"/>
                             </div>
                         </div>
                         <div class="form-group">
@@ -49,8 +49,11 @@
                         </div>
                         <div class="form-group">
                             <label class="control-label col-xs-1" for="story-edit-url">URL</label>
-                            <div class="col-md-7 col-xs-8">
-                                <input id="story-edit-url" class="form-control col-xs-10 ip-pad-adjust"/>
+                            <div class="col-md-8 col-xs-6">
+                                <input id="story-edit-url" class="form-control col-xs-10 ip-pad-adjust ref_url"/>
+                            </div>
+                            <div class="col-md-2 col-xs-8">
+                                <button class="btn btn-info get-ref-url">Get Reference/Current URL</button>
                             </div>
                         </div>
                         <div class="form-group">
@@ -66,7 +69,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <div class="col-md-7 col-md-offset-1 col-xs-7 col-xs-offset-1">
+                            <div class="col-md-10 col-md-offset-1 col-xs-7 col-xs-offset-1">
                                 <div class="panel panel-info">
                                     <div class="panel-heading">Search Result</div>
                                     <div class="panel-body">
@@ -94,20 +97,20 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Edit Issue</h4>
+                <h4 class="modal-title">Create New Story</h4>
             </div>
             <div class="modal-body">
                 <form class="form-horizontal" action="" id="form-add-story" style="padding-left: 5px;">
-                    <div class="form container">
+                    <div class="form">
                         <div class="form-group">
                             <label class="control-label col-xs-1" for="story-add-title">Title</label>
-                            <div class="col-md-7 col-xs-8">
+                            <div class="col-md-10 col-xs-8">
                                 <input id="story-add-title" class="form-control col-xs-10 ip-pad-adjust" required/>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="control-label col-xs-1" for="story-add-desc">Desciption</label>
-                            <div class="col-md-7 col-xs-8">
+                            <label class="control-label col-xs-1" for="story-add-desc">Description</label>
+                            <div class="col-md-10 col-xs-8">
                                 <textarea id="story-add-desc" class="form-control col-xs-10 ip-pad-adjust" rows="4" required></textarea>
                                 <div class="row">
                                     <button class="btn btn-link" id="preview-add-story">Preview as HTML</button>
@@ -116,7 +119,7 @@
                         </div>
                         <div class="form-group">
                             <label class="control-label col-xs-1" for="story-add-tag">Tag</label>
-                            <div class="col-md-7 col-xs-8">
+                            <div class="col-md-10 col-xs-8">
                                 <input id="story-add-tag" class="form-control col-xs-10 ip-pad-adjust"/>
                             </div>
                         </div>
@@ -133,8 +136,11 @@
                         </div>
                         <div class="form-group">
                             <label class="control-label col-xs-1" for="story-add-url">URL</label>
-                            <div class="col-md-7 col-xs-8">
-                                <input id="story-add-url" class="form-control col-xs-10 ip-pad-adjust"/>
+                            <div class="col-md-8 col-xs-8">
+                                <input id="story-add-url" class="form-control col-xs-10 ip-pad-adjust ref_url"/>
+                            </div>
+                            <div class="col-md-2 col-xs-8">
+                                <button class="btn btn-info get-ref-url">Get Reference/Current URL</button>
                             </div>
                         </div>
                         <div class="form-group">
@@ -150,7 +156,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <div class="col-md-7 col-md-offset-1 col-xs-7 col-xs-offset-1">
+                            <div class="col-md-10 col-md-offset-1 col-xs-10 col-xs-offset-1">
                                 <div class="panel panel-info">
                                     <div class="panel-heading">Search Result</div>
                                     <div class="panel-body">

@@ -121,7 +121,7 @@ def update_item(query):
 
         parser = issue_parser if query == 'issue' else story_parser 
         
-        pdb.set_trace()
+        # pdb.set_trace()
         data = parser.update_request(param)
         ok, err_msg = parser.validate(data)
 
